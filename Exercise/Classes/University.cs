@@ -9,12 +9,9 @@ public class University
 {
 
     public string NameUniversity { get; set; }
-    public List<string> Votes { get; set; }
-
-    /* public University(string nameUniversity, List<string> votes)
-    {
-        NameUniversity= nameUniversity;
-        Votes = votes;
-    } */
-    
+    public int Aceptan { get; set; }
+    public int Rechazan { get; set; }
+    public int Blancos { get; set; }
+    public int Nulos { get; set; }
+    public List<string> Votes { get; set; }    
 }
