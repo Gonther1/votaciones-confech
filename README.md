@@ -2,8 +2,6 @@
 
 ## File Main 
 
-
-
 ```c#
 string menu;
 List<University> universities = new List<University>();
@@ -155,53 +153,37 @@ public static List<University> RegisterUnivesities(int number)
 ## Function ShowResults(List<University> universities, int number)
 
 ```c#
-public static List<University> RegisterUnivesities(int number)
+public static void ShowResults(List<University> universities, int number)
 {
-    Console.Clear();
-    string text;
-    string voto;
-    List<University> Universities = new List<University>();
-    for (int i = 0; i < number; i++)
+    int aceptan=0;
+    int rechazan=0;
+    int empates=0;
+    foreach (var i in universities)
     {
-        University universidad = new University();
-        List<string> votos = new List<string>();
-        Console.WriteLine($"Ingrese el nombre de la universidad {i+1}");
-        text=Console.ReadLine();
-        universidad.NameUniversity=text;
-        Console.Clear();
-        Console.WriteLine("A continuacion se le pediran los votos de los diferentes estudiantes\n\nSi no quiere ingresar más votos ingrese la letra 'X'");
-        Console.ReadLine();
-        do
+        if (i.Aceptan > i.Rechazan)
         {
-            Console.Clear();
-            Console.WriteLine($"Ingrese el voto del estudiante");
-            voto=Console.ReadLine().ToUpper();
-            while (voto != "A" && voto != "X" && voto != "R" && voto != "N" && voto != "B")
-            {
-                Console.Clear();
-                Console.WriteLine($"Ingrese un voto valido para el estudiante");
-                voto=Console.ReadLine().ToUpper();
-            }
-            switch (voto)
-            {
-                case "A":
-                    universidad.Aceptan+=1;
-                    break;
-                case "R":
-                    universidad.Rechazan+=1;
-                    break;
-                case "N":
-                    universidad.Nulos+=1;
-                    break;
-                case "B":
-                    universidad.Blancos+=1;
-                    break;
-            }
-            votos.Add(voto);
-        } while (voto != "X");
-        universidad.Votes=votos;
-        Universities.Add(universidad);
-    }        
-    return Universities;
+            aceptan+=1;
+        }else if (i.Aceptan == i.Rechazan)
+        {
+            empates+=1;
+        }
+        else 
+        {
+            rechazan+=1;
+        }
+    }
+    Console.Clear();
+    Console.WriteLine($"Numero de universidades: {number}\n");
+    foreach (var item in universities)
+    {
+        Console.WriteLine($"Universidad: {item.NameUniversity}");
+        foreach (var i in item.Votes)
+        {
+            Console.WriteLine($"Voto: {i}");
+        }
+        Console.WriteLine($"{item.NameUniversity}: {item.Aceptan} aceptan, {item.Rechazan} rechazan, {item.Blancos} blancos, {item.Nulos} nulos.\n");
+    }
+    Console.WriteLine($"Universidades que aceptan: {aceptan}\nUniversidades que rechazan: {rechazan}\nUniversidades con empate: {empates}");
+    Console.ReadLine();
 }
 ```
