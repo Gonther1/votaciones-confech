@@ -1,5 +1,7 @@
 # votaciones-confech
 
+## Console App
+
 ## Planteamiento
 
 La CONFECH, en su afán de agilizar el proceso de recuento de las votaciones, le ha encargado el
