@@ -14,7 +14,7 @@ internal class Program
             Console.WriteLine("1-Registrar Universidades");
             Console.WriteLine("2-Registrar Votos ");
             Console.WriteLine("3-Mostrar resultados de la Votacion");
-            Console.WriteLine("");
+            Console.WriteLine("4-Salir");
             menu=Console.ReadLine();
             switch(menu)
             {
@@ -30,7 +30,6 @@ internal class Program
                     }
                     break;
                 case "2":
-                    Console.ReadLine();
                     if (universities.Count() < 1 && number > 0)
                     {
                         universities=Functions.RegisterUnivesities(number);
